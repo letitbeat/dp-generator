@@ -1,0 +1,22 @@
+graph Network {
+rankdir = LR;
+target = "tcp port 80";
+h1 []
+h2 [group=hosts]
+h3 [group=hosts]
+h4 [group=hosts]
+s1 [group=switches]
+s2 [group=switches]
+s3 [group=switches]
+s4 [group=switches]
+
+h1 -- s1 [label="1 1"]
+h2 -- s2 [label="1 1"]
+h3 -- s3 [label="1 1"]
+h4 -- s4 [label="1 1"]
+s1 -- s2 [label="2 2"]
+s1 -- s3 [label="3 2"]
+s2 -- s3 [label="3 3"]
+s2 -- s4 [label="4 2"]
+s3 -- s4 [label="4 3"]
+}
