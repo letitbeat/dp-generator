@@ -17,13 +17,14 @@ import socket
 import json
 import urllib2
 import subprocess
+import time
 from argparse import ArgumentParser
 
 setLogLevel('info')
 
 TOPOLOGY_FILE = "topology.dot"
 ANALYZER_URL  = "http://analyzer:5000/topology"
-HOSTS_IMAGE   = "generator:latest"  # ubuntu:trusty or any other image could work
+HOSTS_IMAGE   = "letitbeat/packet-generator:latest"  # ubuntu:trusty or any other image could work
 
 parser = ArgumentParser()
 parser.add_argument("-a", "--analyzer",
@@ -135,6 +136,8 @@ if args.analyze:
 
 info('*** Starting network\n')
 net.start()
+
+time.sleep(2)
 
 if args.analyze:
     info('*** Running sniffer for each switch interface\n')
